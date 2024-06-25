@@ -1,0 +1,45 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="Teacher Homepage">
+    <title>TaskGenius-(Teacher-Home)</title>
+    {% comment %} <script src="{% static 'assets/JS/viewtask_script.js' %}"></script> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'assets/css/TeacherHome.css' %}">
+<body>
+    <h1>TaskGenius</h1>
+    <div id="TeacherNav">
+        <nav>
+            <ul>
+                <li class="logo"><a href="{% url 'TeacherHome' %}"><img src="{% static 'assets/img/TaskGeniusLogo.png'%}" alt="" ></a></li>
+                <li><a href="{% url 'TeacherHome' %}" target="_parent">Home</a></li>
+                <li><a href="{% url 'TeacherViewTasks' %}" target="_parent">View Tasks</a></li>
+                <li><a href="{% url 'login' %}" target="_parent">Logout</a></li>
+            </ul>
+        </nav>
+        </div>
+    <h2 id="00">Welcome, {{username}}</h2>
+    <div id="TaskSummary">
+        <h3>Task Summary</h3>
+    <p id="NoOfAssignedTasks">Number of tasks assigned: {{no_tasks}}</p>
+    <p id="NoOfCompletedTasks">Number of tasks completed: {{no_comp}}</p>
+    <p id="NoOfPendingTasks">Number of tasks pending: {{pendingtasks}}</p>
+    </div>
+    
+    
+    <div id="RecentTeacher">
+        <h3>Recent Tasks</h3>
+        {% for x in myTasks %}
+        
+                    <P>{{x.title}}<p>
+                {% endfor %}
+    </div>
+    
+    
+</body>
+
+</body>
+</html>

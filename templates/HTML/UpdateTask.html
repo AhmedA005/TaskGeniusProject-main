@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="Description" content="Admin Homepage">
+        <title>TaskGenius-(Admin-Home)</title>
+        <link rel="stylesheet" href="{% static 'assets/css/viewadmin_style.css'%}"> 
+    </head>
+    <style>
+    .message {
+        border-radius: 10px;
+        box-shadow: 3px 3px 4px 0px rgba(50, 50, 50, 0.75);
+        color: white;
+        margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        text-align: center;
+        width: 80%;
+    }
+    
+    .message.success {
+        background-color: green;
+    }
+    
+    .message.error {
+        background-color: red;
+    }
+    </style>
+    
+    <body>
+        <h1>TaskGenius</h1>
+
+        <div id="AdminNav">
+            <nav>
+                <ul>
+                    <li class="logo"><a href="{% url 'home' %}"><img src="{% static 'assets/img/TaskGeniusLogo.png'%}" alt="" ></a></li>
+                    <li><a href="{% url 'home' %}" target="_parent">Home</a></li>
+                    <li><a href="{% url 'ViewTasks' %}" target="_parent">View Tasks</a></li>
+                    <li><a href="{% url 'AddTask' %}" target="_parent">Add Task</a></li>
+                    <li><a href="{% url 'login' %}" target="_parent">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <p class="message {{ message.tags }}">{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+            <form action="updaterecord/{{task.id}}" method="post">
+            {% csrf_token %}
+            <div id="divform">
+                {% comment %} <br>
+        <label for="input_id"><b>id:</b></label> <input id="input_id" class="box" type="text" required name="id" autofocus>
+        <br> {% endcomment %}
+        <br>
+        <label for="input_title"><b>task title:</b></label> <input id="input_title" class="box" type="text" value="{{task.title}}" required name="title">
+        <br>
+        <br>
+        <label for="input_tname"><b>teacher name:</b></label> <input id="input_tname" class="box" type="text" value ="{{task.teacher}}" required name="teacher name" >
+        <br>
+        <br>
+        <label for="input_Description"><b>Description:</b></label> <input id="input_Description" class="box" type="text" value ="{{task.description}}" required name="Description">
+        <br>
+        <br>
+        <label for="input_Details"><b>Task Details:</b></label> <input id="input_Details" class="box" type="text" value ="{{task.details}}" required name="Details" style="height: 100px;">
+        <br>
+        <br>
+        <label for="priority"><b>Select Priority:</b></label> <select name="priority" id="priority"><option disabled selected value></option> <option value="low">low</option> <option value="medium">
+        medium</option> <option value="high">high</option> </select>
+        <br>
+            </div>
+            <input type="submit" value="Update" class="edit">
+            </form>
+    </body>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.message').fadeIn(750).delay(2000).fadeOut(750);  
+        });
+    </script>
+    
+    
+    

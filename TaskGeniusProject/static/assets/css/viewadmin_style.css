@@ -1,0 +1,167 @@
+* {
+    /* Change your font family */
+    font-family: sans-serif;
+  }
+  
+  body{
+      background: rgb(234, 192, 129);
+  }
+  
+  .logo img{
+    width: 90px;
+    height: auto;
+    padding: none;
+  }
+  
+  ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+    
+    li {
+      float: left;
+    }
+    
+    li a {
+      display: block;
+      color: rgb(233, 233, 213);
+      text-align: center;
+      padding: 16px 16px;
+      text-decoration: none;
+    }
+    
+    /* Change the link color to #111 (black) on hover */
+    li a:hover {
+      background-color: rgb(9, 75, 9);
+    }
+  
+  h1{
+      color:#333;
+  }
+  
+  h2{
+      color:rgb(9, 75, 9);
+      font-size: 36px;
+      text-align: center;
+  }
+  
+  h3{
+      color:rgb(9, 75, 9);
+      font-size: 25px;
+  }
+  
+  
+  
+  .content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .content-table thead {
+    background-color: rgb(9, 75, 9);
+    color: #ecdabc;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .content-table th,
+  .content-table td {
+    padding: 12px 15px;
+  }
+  
+  .content-table tbody tr {
+    border-bottom: 1px solid rgb(9, 75, 9);
+  }
+  
+  /* .content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  } */
+  
+  .content-table tbody tr:last-of-type {
+    border-bottom: 2px solid rgb(9, 75, 9);
+  }
+  
+  .content-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+  }
+
+
+
+
+.edit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+  border-radius: 6px;
+  border: none;
+
+  background: #333;
+  box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1), inset 0px 0.5px 0.5px rgba(255, 255, 255, 0.5), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.12);
+  color: #f1e2c7;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.edit:focus {
+  box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
+  outline: 0;
+}
+
+
+.delete {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+    border-radius: 6px;
+    border: none;
+  
+    background: rgb(123, 2, 2);
+    box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1), inset 0px 0.5px 0.5px rgba(255, 255, 255, 0.5), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.12);
+    color: #f1e2c7;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .delete:focus {
+    box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
+    outline: 0;
+  }
+
+  select{
+    width: 100px;
+    height: 30px;
+    border-radius: 6px;
+    color: white;
+    background: #333;
+  }
+  option{
+    color: white;
+  }
+
+  .box{
+    background: transparent;
+    border-radius: 7px;
+  }
+
+
+  .Button {
+    background: #333;
+    color: #fff;
+    margin-right:8px;
+    border-radius: 7px;
+  }

@@ -1,0 +1,57 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="View all the tasks created by this admin">
+    <title>TaskGenius-(Admin-View Tasks)</title>
+    <link rel="stylesheet" href="{% static 'assets/css/viewadmin_style.css' %}">
+</head>
+<body>
+    <h1>TaskGenius</h1>
+    <div id="AdminNav">
+        <nav>
+            <ul>
+                <li class="logo"><a href="{% url 'home' %}"><img src="{% static 'assets/img/TaskGeniusLogo.png' %}" alt="" ></a></li>
+                <li><a href="{% url 'home' %}" target="_parent">Home</a></li>
+                <li><a href="{% url 'ViewTasks' %}" target="_parent">View Tasks</a></li>
+                <li><a href="{% url 'AddTask' %}" target="_parent">Add Task</a></li>
+                <li><a href="{% url 'login' %}" target="_parent">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+    <br>
+    
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Teacher</th>
+                <th>Priority</th>
+                <th>Description</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="taskTableBody">
+            {% for x in myTasks %}
+            <tr>
+                <td>{{x.task_id}}</td>
+                <td>{{x.title}}</td>
+                <td>{{x.teacher}}</td>
+                <td>{{x.priority}}</td>
+                <td>{{x.description}}</td>
+                <td><a href = "UpdateTask/{{x.id}}"><button class ="edit">Edit</button></a></td>
+                <td><a href = "delete/{{ x.id }}" name="delete"><button class="delete">Delete</button></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+{% comment %} <script src="{% static 'assets/JS/viewtask_script.js' %}"></script> {% endcomment %}
+
+</body>
+</html>

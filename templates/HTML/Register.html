@@ -1,0 +1,128 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TaskGenius-(Register)</title>
+        <link rel="stylesheet" href="{% static 'assets/css/register_styling.css' %}">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+    <style>
+        body {
+            background: url('{% static "assets/img/bookforest.jpg" %}') no-repeat fixed;
+        }
+    </style>
+    <body>
+        <div class="wrapper">
+        <form method="POST" onsubmit="if (validateForm()) redirectToPage(); return false;">
+            {% csrf_token %}
+            <H1>TaskGenius</H1>
+        <br>
+        <h2>sign-up</h2>
+
+            <div class="input_box">
+                <label for="id_username"><b>Username:</b></label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <div class="error">{{ form.username.errors }}</div>
+                {% endif %}
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input_box">
+                <label for="id_email"><b>Email:</b></label>
+                {{ form.email }}
+                <i class='bx bxs-envelope' ></i>
+            </div>
+            <div class="input_box">
+                <label for="id_password1"><b>Password:</b></label>
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                    <div class="error">{{ form.password1.errors }}</div>
+                {% endif %} 
+                <i class='bx bxs-lock-alt' ></i>
+            </div>
+            <div class="input_box">
+                <label for="id_password2"><b>Confirm Password:</b></label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                    <div class="error">{{ form.password2.errors }}</div>
+                {% endif %}
+                <i class='bx bxs-lock-alt' ></i>
+            </div>
+            
+            <div class="checkbox">
+                {{ form.is_admin }}
+                <label for="id_is_admin" class="checkadmin-label"> Sign-up as an admin</label>
+                <i class='bx bxs-edit-alt' ></i>
+            </div>
+
+            <input type="submit" onclick="saveInput()" class="btn">
+
+            <div class="log-in">
+            <p>Already have an account? <a href="{% url 'login' %}">Login.</a></p>
+            <p id="PassNotMatching" style="color:red;"></p>
+            <p id="InvalidUserName" style="color:red;"></p>
+            </div>
+
+        </form>
+    </div>
+
+        <script>
+            function validateUsername() {
+    var username = document.getElementById("un").value;
+    
+    var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+    if (format.test(username)) {
+        document.getElementById("InvalidUserName").textContent = "Username should not contain special characters.";
+        return false;
+    }
+
+    if (/\s/.test(username)) {
+        document.getElementById("InvalidUserName").textContent = "Username should not contain whitespace.";
+        return false;
+    }
+
+    if (username.length < 3 || username.length > 15) {
+        document.getElementById("InvalidUserName").textContent = "Username should be between 3 and 15 characters.";
+        return false;
+    }
+    return true;
+}
+
+function validateForm() {
+    const pass = document.getElementById("pass").value;
+    const cpass = document.getElementById("cpass").value;
+
+    if (pass !== cpass) {
+        document.getElementById("PassNotMatching").textContent = "The password and confirmation password do not match.";
+        return false; 
+    }
+    else if (!validateUsername()) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
+
+function saveInput() {
+    var userInput = document.getElementById("un").value;
+    sessionStorage.setItem("un", userInput);
+}
+
+function redirectToPage() {
+    const isAdmin = document.getElementById("admin").checked;
+    if (isAdmin) {
+        window.location.href = "{% url 'home' %}";
+    } else {
+        window.location.href = "{% url 'TeacherHome' %}";
+
+    }
+}
+
+        </script>
+    </body>
+</html>
